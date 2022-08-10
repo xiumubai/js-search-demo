@@ -2,7 +2,7 @@
  * @Author: 朽木白
  * @Date: 2022-08-10 11:11:04
  * @LastEditors: 1547702880@qq.com
- * @LastEditTime: 2022-08-10 16:05:49
+ * @LastEditTime: 2022-08-10 16:45:09
  * @Description: 
 -->
 <script setup>
@@ -25,7 +25,6 @@ header {
 @media (min-width: 1024px) {
   header {
     display: flex;
-    place-items: center;
     padding-right: calc(var(--section-gap) / 2);
   }
 }
