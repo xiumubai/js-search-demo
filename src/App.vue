@@ -1,23 +1,56 @@
+<!--
+ * @Author: 朽木白
+ * @Date: 2022-08-10 11:11:04
+ * @LastEditors: 1547702880@qq.com
+ * @LastEditTime: 2022-08-10 14:58:43
+ * @Description: 
+-->
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import { RouterLink, RouterView } from 'vue-router';
+// import HelloWorld from './components/HelloWorld.vue';
+import SearchHistory from './components/SearchHistory.vue';
+
+import { reactive, toRefs } from 'vue';
+const state = reactive({
+  searchValue: '',
+});
+
+function handleSearch(val, event) {
+  console.log('val', val);
+  console.log('searchValue', state.searchValue);
+}
 </script>
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
+    <nut-searchbar
+      v-model="state.searchValue"
+      clearable
+      autofocus
+      @search="handleSearch"
+    >
+      <template v-slot:leftout>
+        <nut-icon @click="clickLeft" size="20" name="left"></nut-icon>
+      </template>
+      <template v-slot:leftin>
+        <nut-icon size="14" name="search2"></nut-icon>
+      </template>
+      <template v-slot:rightout>
+        <nut-button @click="handleSearch" type="danger" size="small"
+          >搜索</nut-button
+        >
+      </template>
+    </nut-searchbar>
     <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
+      <!-- <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
-      </nav>
+      </nav> -->
+      <search-history></search-history>
     </div>
   </header>
 
-  <RouterView />
+  <!-- <RouterView /> -->
 </template>
 
 <style scoped>
