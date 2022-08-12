@@ -2,7 +2,7 @@
  * @Author: 朽木白
  * @Date: 2022-08-10 11:11:04
  * @LastEditors: 1547702880@qq.com
- * @LastEditTime: 2022-08-10 17:49:22
+ * @LastEditTime: 2022-08-10 22:30:27
  * @Description: 
 -->
 <script setup>
@@ -15,7 +15,7 @@ defineProps({
 </script>
 
 <template>
-  <div>
+  <div class="goods-list">
     <div v-for="item in list" :key="item.id" class="goods-item">
       <div class="item-left">
         <img :src="item.src" alt="封面" />
@@ -25,8 +25,8 @@ defineProps({
         <div class="goods-blow">
           <div class="price">
             <strong>
-              <em pri="869.00"
-                >¥ <span class="int">{{ item.prtice }}</span></em
+              <em
+                >¥ <span class="int">{{ item.price }}</span></em
               >
             </strong>
           </div>
@@ -48,6 +48,9 @@ defineProps({
 </template>
 
 <style scoped>
+.goods-list {
+  overflow: scroll;
+}
 .goods-item {
   padding: 10px;
   display: flex;

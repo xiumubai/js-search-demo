@@ -2,11 +2,12 @@
  * @Author: 朽木白
  * @Date: 2022-08-10 11:11:04
  * @LastEditors: 1547702880@qq.com
- * @LastEditTime: 2022-08-10 17:47:28
+ * @LastEditTime: 2022-08-10 22:19:07
  * @Description: 
 -->
 <script setup>
 import GoodsList from '../components/GoodsItem.vue';
+import MenuList from '../components/MenuList.vue';
 const list = [
   {
     id: 1,
@@ -62,9 +63,8 @@ const list = [
 
 <template>
   <div>
-    <div class="goodsList">
-      <goods-list :list="list"></goods-list>
-    </div>
+    <menu-list></menu-list>
+    <goods-list :list="list"></goods-list>
   </div>
 </template>
 <style scoped>
