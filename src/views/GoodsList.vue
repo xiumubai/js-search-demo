@@ -2,12 +2,13 @@
  * @Author: 朽木白
  * @Date: 2022-08-10 11:11:04
  * @LastEditors: 1547702880@qq.com
- * @LastEditTime: 2022-08-10 22:19:07
+ * @LastEditTime: 2022-08-12 17:08:29
  * @Description: 
 -->
 <script setup>
 import GoodsList from '../components/GoodsItem.vue';
 import MenuList from '../components/MenuList.vue';
+import TabList from '../components/TabList.vue';
 const list = [
   {
     id: 1,
@@ -64,6 +65,7 @@ const list = [
 <template>
   <div>
     <menu-list></menu-list>
+    <tab-list></tab-list>
     <goods-list :list="list"></goods-list>
   </div>
 </template>
