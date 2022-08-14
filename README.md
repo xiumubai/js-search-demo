@@ -1,6 +1,10 @@
 # jd-search-demo
 
-使用 vue+vite+pina 仿生京东搜索页
+使用 vue+vite 仿生京东搜索页
+
+## 涉及技术
+
+mock+axios+pina+vue-router4.0+NutUi
 
 ## Project Setup
 
@@ -32,7 +36,7 @@ npm run lint
 
 ## 使用组件
 
-## 实现功能
+## 实现主功能
 
 1. 搜索页
 
@@ -59,3 +63,10 @@ npm run lint
 
 - [ ] 新品
 - [ ] 品牌筛选（条件重置）
+
+5. 附加功能
+
+- [ ] 骨架屏
+- [ ] 模糊搜索
+- [ ] 虚拟列表滚动
+- [ ]
