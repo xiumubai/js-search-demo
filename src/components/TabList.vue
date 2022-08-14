@@ -2,45 +2,50 @@
  * @Author: 朽木白
  * @Date: 2022-08-10 11:11:04
  * @LastEditors: 1547702880@qq.com
- * @LastEditTime: 2022-08-12 17:44:19
+ * @LastEditTime: 2022-08-14 20:27:41
  * @Description: 
 -->
 <script setup>
+import { ref } from 'vue';
+
+const tagList = [
+  { id: 1, name: '京东物流' },
+  { id: 2, name: '容量' },
+  { id: 3, name: '产地' },
+  { id: 4, name: '主体材质' },
+  { id: 5, name: '净含量' },
+  { id: 6, name: '新品' },
+  { id: 7, name: '颜色' },
+];
 defineProps({});
+
+const visible = ref(false);
+function handleFilter() {
+  visible.value = true;
+}
 </script>
 
 <template>
   <div class="tab-list">
     <div class="tab-container">
-      <nut-tag class="tag" color="#E9E9E9" textColor="#999999">标签</nut-tag>
-      <nut-tag class="tag" color="#E9E9E9" textColor="#999999"
-        >标标签签</nut-tag
-      >
-      <nut-tag class="tag" color="#E9E9E9" textColor="#999999"
-        >标标签签</nut-tag
-      >
-      <nut-tag class="tag" color="#E9E9E9" textColor="#999999"
-        >标标签签</nut-tag
-      >
-      <nut-tag class="tag" color="#E9E9E9" textColor="#999999"
-        >标标签签</nut-tag
-      >
-      <nut-tag class="tag" color="#E9E9E9" textColor="#999999"
-        >标标签签</nut-tag
-      >
-      <nut-tag class="tag" color="#E9E9E9" textColor="#999999"
-        >标标签签</nut-tag
-      >
-      <nut-tag class="tag" color="#E9E9E9" textColor="#999999"
-        >标标签签</nut-tag
-      >
-      <nut-tag class="tag" color="#E9E9E9" textColor="#999999"
-        >标标签签</nut-tag
+      <nut-tag
+        v-for="item in tagList"
+        :key="item.id"
+        class="tag"
+        color="#E9E9E9"
+        textColor="#999999"
+        >{{ item.name }}</nut-tag
       >
     </div>
-    <div class="filter">
+    <div class="filter" @click="handleFilter">
       <span class="btn-filter">筛选</span>
     </div>
+
+    <nut-popup
+      position="right"
+      :style="{ width: '80%', height: '100%' }"
+      v-model:visible="visible"
+    ></nut-popup>
   </div>
 </template>
 
@@ -79,6 +84,8 @@ defineProps({});
   text-decoration: none;
   color: #333;
   font-size: 14px;
+  display: inline-block;
+  width: 50px;
 }
 
 .btn-filter:before {
@@ -87,7 +94,11 @@ defineProps({});
   pointer-events: none;
   background-color: #e5e5e5;
   width: 1px;
-  height: 8px;
+  height: 12px;
+  -webkit-transform: scaleX(0.5);
+  -webkit-transform-origin: 0 50%;
+  margin-right: 4px;
+  display: inline-block;
 }
 
 .btn-filter:after {
