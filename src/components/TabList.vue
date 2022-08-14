@@ -2,11 +2,11 @@
  * @Author: 朽木白
  * @Date: 2022-08-10 11:11:04
  * @LastEditors: 1547702880@qq.com
- * @LastEditTime: 2022-08-14 22:14:04
+ * @LastEditTime: 2022-08-14 23:12:55
  * @Description: 
 -->
 <script setup>
-import { ref } from 'vue';
+import { ref, reactive } from 'vue';
 
 const tagList = [
   { id: 1, name: '京东物流' },
@@ -19,6 +19,13 @@ const tagList = [
 ];
 
 const filterList = [
+  {
+    id: -1,
+    name: '分类',
+    isArrow: true,
+    type: 'category',
+    desc: '全部分类 ',
+  },
   {
     id: 0,
     name: '品牌',
@@ -45,11 +52,38 @@ const filterList = [
     child: ['春季', '夏季', '四季通用hahafh', '秋季', '冬季'],
   },
 ];
+
+const collapseList = [
+  { name: '男装', child: [] },
+  { name: '女装', child: [] },
+  { name: '童装', child: [] },
+  { name: '童装', child: [] },
+  { name: '童装', child: [] },
+
+  { name: '童装', child: [] },
+  { name: '童装', child: [] },
+  { name: '童装', child: [] },
+  { name: '童装', child: [] },
+  { name: '童装', child: [] },
+  { name: '童装', child: [] },
+  { name: '童装', child: [] },
+
+  { name: '童装', child: [] },
+  { name: '童装', child: [] },
+];
 defineProps({});
 
 const visible = ref(false);
+const visible2 = ref(false);
+
+const activeNames = reactive([1, 2]);
+
 function handleFilter() {
   visible.value = true;
+}
+
+function handleJump() {
+  visible2.value = true;
 }
 </script>
 
@@ -78,19 +112,67 @@ function handleFilter() {
         <div class="filter-item" v-for="item in filterList" :key="item.id">
           <div class="filter-title">
             <div class="title">{{ item.name }}</div>
-            <div class="right">
+            <div class="right" v-if="item.isArrow" @click="handleJump">
               <span class="desc">{{ item.desc }}</span>
               <nut-icon name="arrow-right" color="#999" size="12px"></nut-icon>
             </div>
           </div>
 
           <div class="filter-content">
+            <div class="devider" v-if="!item.isArrow"></div>
             <div class="tags" v-for="(tag, index) in item.child" :key="index">
               {{ tag }}
             </div>
           </div>
         </div>
       </div>
+    </nut-popup>
+
+    <nut-popup
+      position="right"
+      :style="{ width: '80%', height: '100%' }"
+      v-model:visible="visible2"
+    >
+      <nut-sticky top="1">
+        <div class="type-header">已选分类：全部分类</div>
+      </nut-sticky>
+      <nut-collapse icon="down-arrow" v-model:active="activeNames">
+        <nut-collapse-item
+          v-for="(item, index) in collapseList"
+          :key="index"
+          :title="item.name"
+          :name="index"
+        >
+          <nut-radiogroup>
+            <nut-cell-group>
+              <nut-cell>
+                <nut-radio
+                  label="1"
+                  icon-name="checklist"
+                  icon-active-name="checklist"
+                  >选项1</nut-radio
+                >
+              </nut-cell>
+              <nut-cell>
+                <nut-radio
+                  label="2"
+                  icon-name="checklist"
+                  icon-active-name="checklist"
+                  >选项2</nut-radio
+                >
+              </nut-cell>
+              <nut-cell>
+                <nut-radio
+                  label="3"
+                  icon-name="checklist"
+                  icon-active-name="checklist"
+                  >选项3</nut-radio
+                >
+              </nut-cell>
+            </nut-cell-group>
+          </nut-radiogroup>
+        </nut-collapse-item>
+      </nut-collapse>
     </nut-popup>
   </div>
 </template>
@@ -199,7 +281,7 @@ function handleFilter() {
   justify-content: space-around;
 }
 
-.filter-content::before {
+.filter-content .devider {
   content: '';
   position: absolute;
   z-index: 1;
@@ -225,5 +307,18 @@ function handleFilter() {
   text-overflow: ellipsis;
   white-space: nowrap;
   text-align: center;
+}
+
+.type-header {
+  /* position: absolute;
+  top: 0;
+  left: 0;
+  right: 0; */
+  padding: 0 10px;
+  height: 46px;
+  line-height: 46px;
+  font-size: 14px;
+  color: #333;
+  background-color: #fff;
 }
 </style>
