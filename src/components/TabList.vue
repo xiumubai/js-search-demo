@@ -2,7 +2,7 @@
  * @Author: 朽木白
  * @Date: 2022-08-10 11:11:04
  * @LastEditors: 1547702880@qq.com
- * @LastEditTime: 2022-08-14 20:27:41
+ * @LastEditTime: 2022-08-14 22:14:04
  * @Description: 
 -->
 <script setup>
@@ -16,6 +16,34 @@ const tagList = [
   { id: 5, name: '净含量' },
   { id: 6, name: '新品' },
   { id: 7, name: '颜色' },
+];
+
+const filterList = [
+  {
+    id: 0,
+    name: '品牌',
+    child: ['吉普', '吉普', '吉普', '吉普', '吉普', '吉普'],
+  },
+  {
+    id: 1,
+    name: '适用人群',
+    child: ['青年', '中年', '青少年', '老年', '亲自', '情侣'],
+  },
+  {
+    id: 2,
+    name: '颜色',
+    child: ['黑色', '灰色', '白色', '红色', '紫色', '蓝色'],
+  },
+  {
+    id: 3,
+    name: '尺寸',
+    child: [29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40],
+  },
+  {
+    id: 4,
+    name: '季节',
+    child: ['春季', '夏季', '四季通用hahafh', '秋季', '冬季'],
+  },
 ];
 defineProps({});
 
@@ -45,7 +73,25 @@ function handleFilter() {
       position="right"
       :style="{ width: '80%', height: '100%' }"
       v-model:visible="visible"
-    ></nut-popup>
+    >
+      <div class="filter-container">
+        <div class="filter-item" v-for="item in filterList" :key="item.id">
+          <div class="filter-title">
+            <div class="title">{{ item.name }}</div>
+            <div class="right">
+              <span class="desc">{{ item.desc }}</span>
+              <nut-icon name="arrow-right" color="#999" size="12px"></nut-icon>
+            </div>
+          </div>
+
+          <div class="filter-content">
+            <div class="tags" v-for="(tag, index) in item.child" :key="index">
+              {{ tag }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </nut-popup>
   </div>
 </template>
 
@@ -112,5 +158,72 @@ function handleFilter() {
   background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaBAMAAABbZFH9AAADKGlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMwNjcgNzkuMTU3NzQ3LCAyMDE1LzAzLzMwLTIzOjQwOjQyICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ0MgMjAxNSAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo2M0ZFQTNDRTIxODUxMUU3QjI2REY5RTg4QzFFQzZGNSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo2M0ZFQTNDRjIxODUxMUU3QjI2REY5RTg4QzFFQzZGNSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjU0N0RGRjc1MjE4NTExRTdCMjZERjlFODhDMUVDNkY1IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU0N0RGRjc2MjE4NTExRTdCMjZERjlFODhDMUVDNkY1Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+IfYP2wAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAAVUExURUdwTMzMzMzMzMzMzMzMzMzMzMzMzBMmSsUAAAAGdFJOUwDTFcMWF8uWvbwAAABeSURBVBjTYzBLQ4BkBlSeYmIAAwSwigkxMImJQnmBiQoMcEmQFANQUgQhBZJ0AJIsYCmYpCNECiIJkwJJCjAwwqQYGNQSGNiSYBwGtgQQoi6P2QCZB5GmMQ9oJRAAALFhGrKX0V5WAAAAAElFTkSuQmCC')
     no-repeat;
   background-size: 13px auto;
+}
+
+.filter-container {
+  background: #f7f7f7;
+  height: 100%;
+}
+
+.filter-item {
+  background: #fff;
+  margin-bottom: 15px;
+}
+.filter-title {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.filter-title .title {
+  font-size: 16px;
+  color: #333;
+}
+
+.filter-item .right {
+  display: flex;
+  align-items: center;
+}
+
+.filter-item .desc {
+  color: #999;
+  font-size: 12px;
+}
+
+.filter-content {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 10px;
+  padding-top: 10px;
+  justify-content: space-around;
+}
+
+.filter-content::before {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-color: #e5e5e5;
+  height: 1px;
+  left: 0;
+  right: 0;
+  top: 0;
+  left: 10px;
+}
+
+.filter-content .tags {
+  width: 28%;
+  /* float: left; */
+  margin-bottom: 10px;
+  margin-right: 10px;
+  padding: 0 5px;
+  color: #666;
+  background-color: #f7f7f7;
+  border-radius: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: center;
 }
 </style>
