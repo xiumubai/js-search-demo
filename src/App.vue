@@ -2,17 +2,17 @@
  * @Author: 朽木白
  * @Date: 2022-08-10 11:11:04
  * @LastEditors: 1547702880@qq.com
- * @LastEditTime: 2022-08-10 16:45:09
+ * @LastEditTime: 2022-08-15 11:41:51
  * @Description: 
 -->
 <script setup>
 import { RouterView } from 'vue-router';
-import SearchBar from './components/Searchbar.vue';
+import SearchHeader from '@/components/SearchHeader.vue';
 </script>
 
 <template>
   <header>
-    <search-bar></search-bar>
+    <search-header></search-header>
   </header>
   <RouterView />
 </template>
@@ -21,11 +21,5 @@ import SearchBar from './components/Searchbar.vue';
 header {
   line-height: 1.5;
   max-height: 100vh;
-}
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    padding-right: calc(var(--section-gap) / 2);
-  }
 }
 </style>
