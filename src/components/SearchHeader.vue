@@ -2,7 +2,7 @@
  * @Author: 朽木白
  * @Date: 2022-08-10 11:11:04
  * @LastEditors: 1547702880@qq.com
- * @LastEditTime: 2022-08-15 10:48:42
+ * @LastEditTime: 2022-08-15 15:23:23
  * @Description: 
 -->
 <script setup>
@@ -16,7 +16,9 @@ const store = useSearchStore();
 const { searchVal } = storeToRefs(store);
 const { search } = store;
 function handleSearch(val, event) {
-  search(val);
+  search(val, () => {
+    router.push('/goodsList');
+  });
 }
 
 function handleClickLeft() {

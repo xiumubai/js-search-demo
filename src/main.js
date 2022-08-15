@@ -2,7 +2,7 @@
  * @Author: 朽木白
  * @Date: 2022-08-10 11:11:04
  * @LastEditors: 1547702880@qq.com
- * @LastEditTime: 2022-08-10 13:55:13
+ * @LastEditTime: 2022-08-15 15:19:31
  * @Description:
  */
 import { createApp } from 'vue';
@@ -19,7 +19,7 @@ import '@nutui/nutui/dist/style.css';
 
 const app = createApp(App);
 
-app.use(createPinia());
 app.use(router);
+app.use(createPinia());
 app.use(NutUI);
 app.mount('#app');

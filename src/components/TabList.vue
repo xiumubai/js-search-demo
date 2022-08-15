@@ -2,7 +2,7 @@
  * @Author: 朽木白
  * @Date: 2022-08-10 11:11:04
  * @LastEditors: 1547702880@qq.com
- * @LastEditTime: 2022-08-15 08:48:17
+ * @LastEditTime: 2022-08-15 14:37:06
  * @Description: 
 -->
 <script setup>
@@ -59,7 +59,6 @@ const collapseList = [
   { name: '童装', child: [] },
   { name: '童装', child: [] },
   { name: '童装', child: [] },
-
   { name: '童装', child: [] },
   { name: '童装', child: [] },
   { name: '童装', child: [] },
@@ -67,7 +66,6 @@ const collapseList = [
   { name: '童装', child: [] },
   { name: '童装', child: [] },
   { name: '童装', child: [] },
-
   { name: '童装', child: [] },
   { name: '童装', child: [] },
 ];
