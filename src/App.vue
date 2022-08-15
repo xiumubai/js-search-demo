@@ -2,7 +2,7 @@
  * @Author: 朽木白
  * @Date: 2022-08-10 11:11:04
  * @LastEditors: 1547702880@qq.com
- * @LastEditTime: 2022-08-15 14:05:38
+ * @LastEditTime: 2022-08-15 14:33:51
  * @Description: 
 -->
 <script setup>
@@ -13,12 +13,10 @@ import SearchHeader from '@/components/SearchHeader.vue';
 import axios from 'axios';
 
 onMounted(() => {
-  console.log(`the component is now mounted.`);
   axios
     .get(`/api/getUsers`)
     .then((res) => {
-      // users.value = res.data.data;
-      console.log('users', res);
+      console.log('测试接口users', res);
     })
     .catch((err) => {
       console.log(err);

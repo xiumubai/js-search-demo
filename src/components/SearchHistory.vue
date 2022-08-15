@@ -2,15 +2,20 @@
  * @Author: 朽木白
  * @Date: 2022-08-10 14:51:29
  * @LastEditors: 1547702880@qq.com
- * @LastEditTime: 2022-08-15 11:46:31
+ * @LastEditTime: 2022-08-15 14:31:53
  * @Description: 搜索历史
 -->
 
 <script setup>
+import { onMounted } from 'vue';
 import { useSearchStore } from '@/stores/search';
 
 const store = useSearchStore();
-const { clearSerach } = store;
+const { clearSerach, getHistoryList } = store;
+
+onMounted(() => {
+  getHistoryList();
+});
 </script>
 
 <template>

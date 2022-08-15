@@ -2,8 +2,8 @@
  * @Author: 朽木白
  * @Date: 2022-08-15 13:59:42
  * @LastEditors: 1547702880@qq.com
- * @LastEditTime: 2022-08-15 14:25:05
- * @Description:
+ * @LastEditTime: 2022-08-15 14:27:44
+ * @Description: 搜索相关的借口
  */
 
 export default [
