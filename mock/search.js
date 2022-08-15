@@ -2,7 +2,7 @@
  * @Author: 朽木白
  * @Date: 2022-08-15 13:59:42
  * @LastEditors: 1547702880@qq.com
- * @LastEditTime: 2022-08-15 14:27:44
+ * @LastEditTime: 2022-08-15 18:45:57
  * @Description: 搜索相关的借口
  */
 
@@ -28,6 +28,7 @@ export default [
         code: 0,
         message: 'ok',
         data: [
+          { name: '衣服', isHot: true },
           { name: '女装', isHot: true },
           { name: '男装', isHot: true },
           { name: '童装', isHot: false },
