@@ -2,15 +2,20 @@
  * @Author: 朽木白
  * @Date: 2022-08-10 14:51:29
  * @LastEditors: 1547702880@qq.com
- * @LastEditTime: 2022-08-15 11:44:58
+ * @LastEditTime: 2022-08-15 14:23:32
  * @Description: 热门搜索
 -->
 
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import { useSearchStore } from '../stores/search';
 const store = useSearchStore();
+const { getHotList } = store;
 const visible = ref(false);
+
+onMounted(() => {
+  getHotList();
+});
 
 function handleChangeWordVisible() {
   visible.value = !visible.value;
