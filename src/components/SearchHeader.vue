@@ -2,26 +2,32 @@
  * @Author: 朽木白
  * @Date: 2022-08-10 11:11:04
  * @LastEditors: 1547702880@qq.com
- * @LastEditTime: 2022-08-15 17:32:26
+ * @LastEditTime: 2022-08-15 17:53:05
  * @Description: 搜索组件
 -->
 <script setup>
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { storeToRefs } from 'pinia';
-import { useSearchStore } from '../stores/search';
-
+import { useSearchStore } from '@/stores/search';
+import { useGoodsStore } from '@/stores/goods';
 const router = useRouter();
 const store = useSearchStore();
+const goodsStore = useGoodsStore();
 const { searchVal } = storeToRefs(store);
 const { search } = store;
 const path = ref(router.currentRoute.value.path);
 const keywoprd = ref(searchVal);
+
 /** 按Enter搜索 */
 function handleSearch() {
   search(keywoprd.value, () => {
     if (path.value !== '/goodsList') {
       router.push('/goodsList');
+    }
+
+    if (path.value === '/goodsList') {
+      goodsStore.getGoodsList(keywoprd.value);
     }
   });
 }

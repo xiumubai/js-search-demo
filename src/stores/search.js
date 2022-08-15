@@ -2,7 +2,7 @@
  * @Author: 朽木白
  * @Date: 2022-08-15 10:17:44
  * @LastEditors: 1547702880@qq.com
- * @LastEditTime: 2022-08-15 16:56:52
+ * @LastEditTime: 2022-08-15 18:14:02
  * @Description:
  */
 import { defineStore } from 'pinia';
@@ -26,14 +26,16 @@ export const useSearchStore = defineStore({
     },
     search(val, cb) {
       console.log('searchVal', val);
-      this.searchVal = val;
-      // TODO 数组去重
-      this.searchHistory.push(val);
-      localStorage.setItem(
-        'search-history',
-        JSON.stringify(this.searchHistory)
-      );
-      cb();
+      if (val) {
+        this.searchVal = val;
+        // TODO 数组去重
+        this.searchHistory.push(val);
+        localStorage.setItem(
+          'search-history',
+          JSON.stringify(this.searchHistory)
+        );
+        cb();
+      }
     },
     /**
      * @description: 查询热门搜索接口
