@@ -27,10 +27,10 @@ onMounted(() => {
 </script>
 
 <template>
-  <header>
+  <div>
     <search-header></search-header>
-  </header>
-  <RouterView />
+    <RouterView />
+  </div>
 </template>
 
 <style scoped>
