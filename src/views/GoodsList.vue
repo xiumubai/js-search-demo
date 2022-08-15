@@ -2,7 +2,7 @@
  * @Author: 朽木白
  * @Date: 2022-08-10 11:11:04
  * @LastEditors: 1547702880@qq.com
- * @LastEditTime: 2022-08-15 15:48:35
+ * @LastEditTime: 2022-08-15 15:57:17
  * @Description: 
 -->
 <script setup>
@@ -37,7 +37,8 @@ onMounted(async () => {
   <div>
     <menu-list></menu-list>
     <tab-list></tab-list>
-    <goods-list :list="list"></goods-list>
+    <goods-list v-if="list.length > 0" :list="list"></goods-list>
+    <nut-empty v-else description="无商品"></nut-empty>
   </div>
 </template>
 <style scoped>
