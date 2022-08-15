@@ -2,13 +2,12 @@
  * @Author: 朽木白
  * @Date: 2022-08-10 11:11:04
  * @LastEditors: 1547702880@qq.com
- * @LastEditTime: 2022-08-15 14:33:51
+ * @LastEditTime: 2022-08-15 16:33:47
  * @Description: 
 -->
 <script setup>
 import { onMounted } from 'vue';
 import { RouterView } from 'vue-router';
-import SearchHeader from '@/components/SearchHeader.vue';
 
 import axios from 'axios';
 
@@ -25,10 +24,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div>
-    <search-header></search-header>
-    <RouterView />
-  </div>
+  <RouterView />
 </template>
 
 <style scoped>

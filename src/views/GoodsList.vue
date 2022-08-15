@@ -2,13 +2,14 @@
  * @Author: 朽木白
  * @Date: 2022-08-10 11:11:04
  * @LastEditors: 1547702880@qq.com
- * @LastEditTime: 2022-08-15 15:57:17
+ * @LastEditTime: 2022-08-15 16:34:34
  * @Description: 
 -->
 <script setup>
 import { onMounted, ref } from 'vue';
 import axios from 'axios';
 import { useSearchStore } from '@/stores/search';
+import SearchHeader from '@/components/SearchHeader.vue';
 import GoodsList from '@/components/GoodsItem.vue';
 import MenuList from '@/components/MenuList.vue';
 import TabList from '@/components/TabList.vue';
@@ -35,6 +36,7 @@ onMounted(async () => {
 
 <template>
   <div>
+    <search-header></search-header>
     <menu-list></menu-list>
     <tab-list></tab-list>
     <goods-list v-if="list.length > 0" :list="list"></goods-list>
