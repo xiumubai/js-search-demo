@@ -2,12 +2,12 @@
  * @Author: 朽木白
  * @Date: 2022-08-10 14:51:29
  * @LastEditors: 1547702880@qq.com
- * @LastEditTime: 2022-08-15 14:23:32
+ * @LastEditTime: 2022-08-15 17:07:51
  * @Description: 热门搜索
 -->
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, computed } from 'vue';
 import { useSearchStore } from '../stores/search';
 const store = useSearchStore();
 const { getHotList } = store;
@@ -19,6 +19,14 @@ onMounted(() => {
 
 function handleChangeWordVisible() {
   visible.value = !visible.value;
+}
+
+// const textColor = computed((isHot) => {
+//   console.log('is', isHot);
+// });
+
+function textColor(isHot) {
+  return isHot ? '#e93b3d' : '#999999';
 }
 </script>
 
@@ -33,11 +41,9 @@ function handleChangeWordVisible() {
     </div>
     <div class="search-tags" v-show="!visible">
       <span class="tags" v-for="(item, index) in store.searchHot" :key="index">
-        <nut-tag
-          color="#E9E9E9"
-          :textColor="[item.isHot ? '#e93b3d' : '#999999']"
-          >{{ item.name }}</nut-tag
-        >
+        <nut-tag color="#E9E9E9" :textColor="textColor(item.isHot)">{{
+          item.name
+        }}</nut-tag>
       </span>
     </div>
   </div>
