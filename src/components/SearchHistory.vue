@@ -2,17 +2,24 @@
  * @Author: 朽木白
  * @Date: 2022-08-10 14:51:29
  * @LastEditors: 1547702880@qq.com
- * @LastEditTime: 2022-08-15 14:31:53
+ * @LastEditTime: 2022-08-15 18:41:08
  * @Description: 搜索历史
 -->
 
 <script setup>
 import { onMounted } from 'vue';
+import { useRouter } from 'vue-router';
 import { useSearchStore } from '@/stores/search';
 
+const router = useRouter();
 const store = useSearchStore();
-const { clearSerach, getHistoryList } = store;
-
+const { clearSerach, getHistoryList, search } = store;
+function handleSearch(val) {
+  console.log('val', val);
+  search(val, () => {
+    router.push('/goodsList');
+  });
+}
 onMounted(() => {
   getHistoryList();
 });
@@ -30,7 +37,12 @@ onMounted(() => {
         v-for="(item, index) in store.searchHistory"
         :key="index"
       >
-        <nut-tag color="#E9E9E9" textColor="#999999">{{ item }}</nut-tag>
+        <nut-tag
+          color="#E9E9E9"
+          textColor="#999999"
+          @click="handleSearch(item)"
+          >{{ item }}</nut-tag
+        >
       </span>
     </div>
   </div>

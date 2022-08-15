@@ -2,7 +2,7 @@
  * @Author: 朽木白
  * @Date: 2022-08-10 11:11:04
  * @LastEditors: 1547702880@qq.com
- * @LastEditTime: 2022-08-15 17:53:05
+ * @LastEditTime: 2022-08-15 18:34:20
  * @Description: 搜索组件
 -->
 <script setup>
@@ -22,6 +22,7 @@ const keywoprd = ref(searchVal);
 /** 按Enter搜索 */
 function handleSearch() {
   search(keywoprd.value, () => {
+    // 当在goodsList页面不不要做跳转
     if (path.value !== '/goodsList') {
       router.push('/goodsList');
     }
