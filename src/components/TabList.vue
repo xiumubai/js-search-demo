@@ -2,7 +2,7 @@
  * @Author: 朽木白
  * @Date: 2022-08-10 11:11:04
  * @LastEditors: 1547702880@qq.com
- * @LastEditTime: 2022-08-14 23:12:55
+ * @LastEditTime: 2022-08-15 08:48:17
  * @Description: 
 -->
 <script setup>
@@ -200,12 +200,6 @@ function handleJump() {
 
 .tab-container::-webkit-scrollbar {
   display: none;
-}
-
-.filter {
-  /* position: absolute;
-  right: 10px;
-  top: 10px; */
 }
 
 .btn-filter {
