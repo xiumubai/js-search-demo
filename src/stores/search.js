@@ -2,7 +2,7 @@
  * @Author: 朽木白
  * @Date: 2022-08-15 10:17:44
  * @LastEditors: 1547702880@qq.com
- * @LastEditTime: 2022-08-15 15:24:37
+ * @LastEditTime: 2022-08-15 15:31:39
  * @Description:
  */
 import { defineStore } from 'pinia';
@@ -11,7 +11,7 @@ import axios from 'axios';
 export const useSearchStore = defineStore({
   id: 'serach',
   state: () => ({
-    searchVal: '',
+    searchVal: '衣服',
     searchHistory: [],
     searchHot: [],
   }),

@@ -2,7 +2,7 @@
  * @Author: 朽木白
  * @Date: 2022-08-10 11:11:04
  * @LastEditors: 1547702880@qq.com
- * @LastEditTime: 2022-08-15 15:30:08
+ * @LastEditTime: 2022-08-15 15:48:35
  * @Description: 
 -->
 <script setup>
@@ -18,7 +18,10 @@ const list = ref([]);
 onMounted(async () => {
   if (store.searchVal) {
     await axios
-      .get(`/api/goods/list`)
+      .get(`/api/goods/list`, {
+        params: { name: store.searchVal },
+        headers: { 'content-type': 'application/x-www-form-urlencoded' },
+      })
       .then((res) => {
         list.value = res.data.data;
         console.log('goodsList', res);
