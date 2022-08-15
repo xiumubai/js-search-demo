@@ -2,7 +2,7 @@
  * @Author: 朽木白
  * @Date: 2022-08-15 10:17:44
  * @LastEditors: 1547702880@qq.com
- * @LastEditTime: 2022-08-15 16:08:35
+ * @LastEditTime: 2022-08-15 16:56:52
  * @Description:
  */
 import { defineStore } from 'pinia';
@@ -20,14 +20,19 @@ export const useSearchStore = defineStore({
   },
   actions: {
     clearSerach() {
-      console.log('clearSerach');
+      console.log('clearSerach list');
       this.searchHistory = [];
+      localStorage.removeItem('search-history');
     },
     search(val, cb) {
-      console.log('12313');
+      console.log('searchVal', val);
       this.searchVal = val;
       // TODO 数组去重
       this.searchHistory.push(val);
+      localStorage.setItem(
+        'search-history',
+        JSON.stringify(this.searchHistory)
+      );
       cb();
     },
     /**
@@ -53,7 +58,12 @@ export const useSearchStore = defineStore({
       await axios
         .get(`/api/search/history`)
         .then((res) => {
-          this.searchHistory = res.data.data;
+          const list = JSON.parse(localStorage.getItem('search-history'));
+          if (list) {
+            this.searchHistory = list;
+          } else {
+            this.searchHistory = res.data.data;
+          }
           console.log('history', res);
         })
         .catch((err) => {

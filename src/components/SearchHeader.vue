@@ -2,7 +2,7 @@
  * @Author: 朽木白
  * @Date: 2022-08-10 11:11:04
  * @LastEditors: 1547702880@qq.com
- * @LastEditTime: 2022-08-15 16:43:40
+ * @LastEditTime: 2022-08-15 17:32:26
  * @Description: 搜索组件
 -->
 <script setup>
@@ -16,10 +16,10 @@ const store = useSearchStore();
 const { searchVal } = storeToRefs(store);
 const { search } = store;
 const path = ref(router.currentRoute.value.path);
-
+const keywoprd = ref(searchVal);
 /** 按Enter搜索 */
-function handleSearch(val, event) {
-  search(val, () => {
+function handleSearch() {
+  search(keywoprd.value, () => {
     if (path.value !== '/goodsList') {
       router.push('/goodsList');
     }
@@ -29,19 +29,10 @@ function handleSearch(val, event) {
 function handleClickLeft() {
   router.back();
 }
-
-/** 点击搜索按钮搜索 */
-function rightIconSearch() {
-  search(searchVal, () => {
-    if (path.value !== '/goodsList') {
-      router.push('/goodsList');
-    }
-  });
-}
 </script>
 
 <template>
-  <nut-searchbar v-model="searchVal" clearable autofocus @search="handleSearch">
+  <nut-searchbar v-model="keywoprd" clearable autofocus @search="handleSearch">
     <template v-slot:leftout>
       <nut-icon
         v-if="path === '/goodsList'"
@@ -54,7 +45,7 @@ function rightIconSearch() {
       <nut-icon size="14" name="search"></nut-icon>
     </template>
     <template v-slot:rightout>
-      <nut-button type="danger" size="small" @click="rightIconSearch"
+      <nut-button type="danger" size="small" @click="handleSearch"
         >搜索</nut-button
       >
     </template>

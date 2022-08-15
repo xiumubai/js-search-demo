@@ -2,7 +2,7 @@
  * @Author: 朽木白
  * @Date: 2022-08-10 14:51:29
  * @LastEditors: 1547702880@qq.com
- * @LastEditTime: 2022-08-15 17:07:51
+ * @LastEditTime: 2022-08-15 17:09:15
  * @Description: 热门搜索
 -->
 
@@ -20,10 +20,6 @@ onMounted(() => {
 function handleChangeWordVisible() {
   visible.value = !visible.value;
 }
-
-// const textColor = computed((isHot) => {
-//   console.log('is', isHot);
-// });
 
 function textColor(isHot) {
   return isHot ? '#e93b3d' : '#999999';
