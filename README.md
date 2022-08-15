@@ -77,3 +77,5 @@ npm run lint
 - [x] 获取热门搜索列表`api/search/hot`
 - [x] 获取历史搜索列表`api/search/history`
 - [x] 商品列表`api/goods/list`
+
+补充说明：数据都是 mock 生成，所以在搜索的时候只有关键字【衣服】可以搜索到数据
