@@ -2,7 +2,7 @@
  * @Author: 朽木白
  * @Date: 2022-08-15 10:17:44
  * @LastEditors: 1547702880@qq.com
- * @LastEditTime: 2022-08-15 18:14:02
+ * @LastEditTime: 2022-08-15 18:30:43
  * @Description:
  */
 import { defineStore } from 'pinia';
@@ -15,9 +15,6 @@ export const useSearchStore = defineStore({
     searchHistory: [],
     searchHot: [],
   }),
-  getters: {
-    searchHistoryList: (state) => state.searchHistory,
-  },
   actions: {
     clearSerach() {
       console.log('clearSerach list');
@@ -28,12 +25,14 @@ export const useSearchStore = defineStore({
       console.log('searchVal', val);
       if (val) {
         this.searchVal = val;
-        // TODO 数组去重
-        this.searchHistory.push(val);
-        localStorage.setItem(
-          'search-history',
-          JSON.stringify(this.searchHistory)
-        );
+        // 相同的值不需要添加到历史搜索记录当中
+        if (!this.searchHistory.includes(val)) {
+          this.searchHistory.push(val);
+          localStorage.setItem(
+            'search-history',
+            JSON.stringify(this.searchHistory)
+          );
+        }
         cb();
       }
     },
